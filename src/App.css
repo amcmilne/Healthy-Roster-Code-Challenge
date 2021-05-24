@@ -5,3 +5,17 @@
 html {
   background-color: #E8E8E8;  
 }
+
+#orgName {
+  font-family: 'Montserrat', sans-serif;
+}
+
+#teamName {
+  font-family: 'Montserrat', sans-serif; 
+}
+#title {
+  font-family: 'Montserrat', sans-serif; 
+}
+#instructions {
+  font-family: 'Montserrat', sans-serif; 
+}
