@@ -72,12 +72,12 @@ export default function Organizations() {
                 aria-controls="panel1a-content"
                 id={"panel1a-header-" + orgs.Id}
               >
-                <Typography className=" text-yellow-600">
+                <Typography variant="subtitle1" className=" text-yellow-600">
                   {orgs.OrganizationName}
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <Typography className=" text-gray-500 text-left">
+                <Typography variant="caption" className=" text-gray-500 text-left">
                   {team.length
                     ? team.map((orgTeams) => {
                         return (
