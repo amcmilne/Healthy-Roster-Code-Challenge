@@ -55,15 +55,15 @@ export default function Organizations() {
 
   return (
     <>
-      <div className="blur-xl text-3xl text-center mt-4 mb-2 pt-2 pb-4 w-2/5 mx-auto rounded-b-lg text-gray-600 shadow-lg bg-gray-200">
-        <h1>Organizations:</h1>
+      <div className="mt-4 mb-2 pt-2 pb-4 w-1/3 mx-auto rounded-b-lg text-gray-600 shadow-lg bg-gray-200">
+        <h1 className="md:text-3xl text-2x1">Organizations:</h1>
         <h3 className="text-sm">Please select for list of available teams.</h3>
       </div>
       <div className="py-4 px-4 w-1/2 shadow-xl mx-auto my-auto mt-4 mb-10">
         {organization.map((orgs) => {
           return (
             <Accordion
-              square
+              rounded
               expanded={expanded === orgs.Id}
               onChange={handleOrganizationChange(orgs.Id)}
             >
@@ -82,7 +82,7 @@ export default function Organizations() {
                     ? team.map((orgTeams) => {
                         return (
                           <>
-                            {orgTeams.Name}
+                            <li>{orgTeams.Name}</li>
                             <br />
                           </>
                         );
