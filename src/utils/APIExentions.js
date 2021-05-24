@@ -15,3 +15,18 @@ export const GET = (pathRouting) => {
   });
   return getResponse;
 };
+
+export const POST = (pathRouting) => {
+  const postResponse = "not yet implemented";
+  return postResponse; 
+};
+
+export const PUT = (pathRouting) => {
+  const putResponse = "not yet implemented";
+  return putResponse; 
+};
+
+export const DELETE = (pathRouting) => {
+  const deleteResponse = "not yet implemented";
+  return deleteResponse; 
+};

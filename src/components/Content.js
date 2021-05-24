@@ -10,13 +10,14 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 const healthCareProviderID = "128283A0-6BE9-4B48-AD67-452645871FB6";
 
 export default function Organizations() {
+  const [componentLoading, setLoading] = useState(true);
   const [organization, setOrganizations] = useState([]);
   const [team, setTeams] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [orgID, setOrgID] = useState("");
   const [expanded, setExpanded] = useState("");
 
   //inital page load using the provided HealthCareProviderID to access Organizations
-  const loadInitPageData = async () => {
+  const loadOrganizations = async () => {
     getOrganizations(healthCareProviderID)
       .then((orgs) => {
         setOrganizations(orgs);
@@ -25,21 +26,30 @@ export default function Organizations() {
       .catch(console.error);
   };
 
-  useEffect(() => {
-    loadInitPageData();
-  }, []);
-
   // handle change event of the organization
-  const handleOrganizationChange = (panel) => (event, newExpanded) => {
-    getTeams(panel)
+  const handleOrganizationChange = (organizationID) => (event, newExpanded) => {
+    // update the organization
+    setOrgID(organizationID);
+
+    // expand the panel
+    setExpanded(newExpanded ? organizationID : false);
+  };
+
+  useEffect(() => {
+    loadOrganizations();
+  }, [healthCareProviderID]);
+
+  // monitor the organization id for changes. when it's modified, get the teams for that organization.
+  useEffect(() => {
+    setTeams([{ Name: "...Fetching teams..." }]);
+    getTeams(orgID)
       .then((teams) => {
         setTeams(teams);
       })
       .catch(console.error);
-    setExpanded(newExpanded ? panel : false);
-  };
+  }, [orgID]);
 
-  if (loading) {
+  if (componentLoading) {
     return <Loading />;
   }
 

@@ -29,5 +29,3 @@ export const getTeams = async (orgID) => {
   }
   return rtnData;
 };
-
-
